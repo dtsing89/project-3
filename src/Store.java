@@ -1,3 +1,4 @@
+import java.util.Random;
 
 public class Store {
 	//Setting the price for each roll
@@ -27,9 +28,27 @@ public class Store {
 		System.out.println("$" + pastryRoll.getCost());
 		System.out.println("$" + jellyRoll.getCost());
 		System.out.println("$" + sausageRoll.getCost());
-
-
-
+		
+		Random random = new Random();	
+		
+		for (int i = 0; i < 30; i++) {
+			
+			int custNum = random.nextInt(3);
+			System.out.println(custNum);
+			
+			switch(custNum) {
+			case 0:
+				//casual cust
+			case 1:
+				//business cust
+			case 2:
+				//catering cust
+			}
+		}
+		
+		
+		
+		
 
 		
 	}
