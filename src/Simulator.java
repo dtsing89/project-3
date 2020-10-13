@@ -36,7 +36,7 @@ public class Simulator implements Observer {
 			int casualCount = 0;
 			int businessCount = 0;
 			int cateringCount = 0;
-			
+
 			int casualUnf = 0;
 			int businessUnf = 0;
 			int cateringUnf = 0;
@@ -45,73 +45,86 @@ public class Simulator implements Observer {
 			System.out.println(custNum);
 
 			switch (custNum) {
-				case 0: 
-					if (casualCount > 12) {
+			case 0:
+				if (casualCount > 12) {
+					break;
+				}
+
+				creator.getCust("CasualCust");
+				int buyAmount = random.nextInt(3) + 1;
+				int rollType = random.nextInt(5);
+
+				switch (rollType) {
+				case 0:
+					if (store.springRollCount <= 0) {
+						casualUnf++;
 						break;
 					}
-					
-					
-					creator.getCust("CasualCust");
-					int buyAmount = random.nextInt(3) + 1;
-					int rollType = random.nextInt(5);
-					
-					switch (rollType) {
-						case 0:
-							if (store.springRollCount <= 0) {
-								casualUnf++;
-								break;
-							}
-							
-							
-							store.decrement("springRoll", buyAmount);
-							
-							
-							
-						case 1:
-							if (store.eggRollCount <= 0) {
-								casualUnf++;
-								break;
-							}
-							
-							store.decrement("eggRoll", buyAmount);
-							
-						case 2:
-							if (store.sausageRollCount <= 0) {
-								casualUnf++;
-								break;
-							}
-							
-							store.decrement("sausageRoll", buyAmount);
-						case 3:
-							if (store.pastryRollCount <= 0) {
-								casualUnf++;
-								break;
-							}
-							
-							store.decrement("pastryRoll", buyAmount);
-						case 4:
-							if (store.jellyRollCount <= 0) {
-								casualUnf++;
-								break;
-							}
-							
-							store.decrement("jellyRoll", buyAmount);
-					}
-					
-					//update(store);
-					
+
+					store.decrement("springRoll", buyAmount);
+
 				case 1:
-					if (businessCount > 3) {
+					if (store.eggRollCount <= 0) {
+						casualUnf++;
 						break;
 					}
-					creator.getCust("BusinessCust");
-					
-					
+
+					store.decrement("eggRoll", buyAmount);
+
 				case 2:
-					if (cateringCount > 3) {
+					if (store.sausageRollCount <= 0) {
+						casualUnf++;
 						break;
 					}
-					creator.getCust("CateringCust");
+
+					store.decrement("sausageRoll", buyAmount);
+				case 3:
+					if (store.pastryRollCount <= 0) {
+						casualUnf++;
+						break;
+					}
+
+					store.decrement("pastryRoll", buyAmount);
+				case 4:
+					if (store.jellyRollCount <= 0) {
+						casualUnf++;
+						break;
+					}
+
+					store.decrement("jellyRoll", buyAmount);
+				}
+
+				// update(store);
+
+			case 1:
+				if (businessCount > 3) {
+					break;
+				}
+				creator.getCust("BusinessCust");
+
+					if (store.springRollCount <= 0 || store.eggRollCount <= 0) {
+						businessUnf++;
+						break;
+					} else if (store.jellyRollCount <= 0 || store.pastryRollCount <= 0
+							|| store.sausageRollCount <= 0) {
+						businessUnf++;
+						break;
+					} else {
+						store.decrement("springRoll", 2);
+						store.decrement("eggRoll", 2);
+						store.decrement("sausageRoll", 2);
+						store.decrement("pastryRoll", 2);
+						store.decrement("jellyRoll", 2);
+					}
+
+				
+
+			case 2:
+				if (cateringCount > 3) {
+					break;
+				}
+				creator.getCust("CateringCust");
+
 			}
 		}
 	}
@@ -122,7 +135,7 @@ public class Simulator implements Observer {
 		if (store.springRollCount == 0 && store.eggRollCount == 0 && store.jellyRollCount == 0
 				&& store.pastryRollCount == 0 && store.sausageRollCount == 0) {
 			// TODO: close store
-			
+
 		} else if (store.springRollCount == 0) {
 			// out of spring rolls
 		} else if (store.eggRollCount == 0) {
