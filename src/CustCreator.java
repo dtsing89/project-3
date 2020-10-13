@@ -1,5 +1,5 @@
 
-public class CustCreator {
+public class CustCreator {//Using factory method to create customers
 	public Customer getCust(String CustType) {
 		
 		if(CustType == null) {

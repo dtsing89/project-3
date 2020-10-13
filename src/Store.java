@@ -1,56 +1,68 @@
+import java.util.Observable;
 import java.util.Random;
 
-public class Store {
+public class Store extends Observable{
 	//Setting the price for each roll
-	private static double springRollCost = 5.00;
-	private static double eggRollCost = 3.00;
-	private static double jellyRollCost = 4.00;
-	private static double pastryRollCost = 7.00;
-	private static double sausageRollCost = 6.00;
+	public double springRollCost = 5.00;
+	public double eggRollCost = 3.00;
+	public double jellyRollCost = 4.00;
+	public double pastryRollCost = 7.00;
+	public double sausageRollCost = 6.00;
 	
-//Using decorator method to add extra features
-	public static void main(String[] args) {
-		Roll springRoll = new Roll("springRoll", springRollCost);
-		Roll eggRoll = new Roll("eggRoll", eggRollCost);
-		Roll jellyRoll = new Roll("jellyRoll", jellyRollCost);
-		Roll sausageRoll = new Roll("sausageRoll", sausageRollCost);
-		Roll pastryRoll = new Roll("pastryRoll", pastryRollCost);
-		
-		springRoll = new Sauce(springRoll);
-		springRoll = new Sauce(springRoll);
-		eggRoll = new Toppings(eggRoll);
-		eggRoll = new Sauce(eggRoll);
-		eggRoll = new Fillings(eggRoll);
-
-		
-		System.out.println("$" + springRoll.getCost());
-		System.out.println("$" + eggRoll.getCost());
-		System.out.println("$" + pastryRoll.getCost());
-		System.out.println("$" + jellyRoll.getCost());
-		System.out.println("$" + sausageRoll.getCost());
-		
-		Random random = new Random();	
-		
-		for (int i = 0; i < 30; i++) {
-			
-			int custNum = random.nextInt(3);
-			System.out.println(custNum);
-			
-			switch(custNum) {
-			case 0:
-				//casual cust
-			case 1:
-				//business cust
-			case 2:
-				//catering cust
+	// inventory
+	public int springRollCount = 30;
+	public int eggRollCount = 30;
+	public int jellyRollCount = 30;
+	public int pastryRollCount = 30;
+	public int sausageRollCount = 30;
+	
+	@SuppressWarnings("deprecation")
+	public void decrement(String type)
+	{
+		if (type.equals("springRoll"))
+		{
+			springRollCount--;
+			if (springRollCount == 0)
+			{
+				setChanged();
+				notifyObservers();
 			}
 		}
-		
-		
-		
-		
-
-		
+		else if (type.equals("eggRoll"))
+		{
+			eggRollCount--;
+			if (eggRollCount == 0)
+			{
+				setChanged();
+				notifyObservers();
+			}
+		}
+		else if (type.equals("sausageRoll"))
+		{
+			sausageRollCount--;
+			if (sausageRollCount == 0) 
+			{
+				setChanged();
+				notifyObservers();
+			}	
+		}
+		else if (type.equals("pastryRoll"))
+		{
+			pastryRollCount--;
+			if (pastryRollCount == 0)
+			{
+				setChanged();
+				notifyObservers();
+			}
+		}
+		else if (type.equals("jellyRoll"))
+		{
+			jellyRollCount--;
+			if (jellyRollCount == 0)
+			{
+				setChanged();
+				notifyObservers();
+			}
+		}
 	}
-
 }
