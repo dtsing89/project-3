@@ -1,5 +1,6 @@
 
 public class Store {
+	//Setting the price for each roll
 	private static double springRollCost = 5.00;
 	private static double eggRollCost = 3.00;
 	private static double jellyRollCost = 4.00;
@@ -16,12 +17,21 @@ public class Store {
 		
 		springRoll = new Sauce(springRoll);
 		springRoll = new Sauce(springRoll);
-		System.out.println("$" + springRoll.getCost());
+		eggRoll = new Toppings(eggRoll);
+		eggRoll = new Sauce(eggRoll);
+		eggRoll = new Fillings(eggRoll);
+
 		
-		//30 days
-		for (int i = 0; i < 30; i++) {
-			
-		}
+		System.out.println("$" + springRoll.getCost());
+		System.out.println("$" + eggRoll.getCost());
+		System.out.println("$" + pastryRoll.getCost());
+		System.out.println("$" + jellyRoll.getCost());
+		System.out.println("$" + sausageRoll.getCost());
+
+
+
+
+		
 	}
 
 }

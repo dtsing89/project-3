@@ -3,7 +3,7 @@ public class Sauce extends Roll {
 	
 	private Roll roll;
 	
-	public Sauce (Roll roll)
+	public Sauce (Roll roll) //Decorator method to implement the cost for extra sauce.
 	{
 		this.roll = roll;
 		type = roll.getType();
@@ -15,12 +15,22 @@ public class Sauce extends Roll {
 		{
 			return roll.getCost() + 0.20;
 		}
-//		else if (roll instance EggRoll)
-//		{
-//			return roll.getCost() + 0.30;
-//		}
-		// TODO: check for other roll types
-		
+		else if (roll.getType().equals("eggRoll"))
+		{
+			return roll.getCost() + 0.30;
+		}
+		else if(roll.getType().equals("sausageRoll")) 
+		{
+			return roll.getCost() + 0.20;
+		}
+		else if(roll.getType().equals("pastryRoll")) 
+		{
+			return roll.getCost() + 0.50;
+		}
+		else if(roll.getType().equals("jellyRoll"))
+		{
+			return roll.getCost() + 0.20;
+		}
 		return roll.getCost();
 	}
 
