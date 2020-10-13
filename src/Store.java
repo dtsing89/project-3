@@ -17,6 +17,11 @@ public class Store {
 		springRoll = new Sauce(springRoll);
 		springRoll = new Sauce(springRoll);
 		System.out.println("$" + springRoll.getCost());
+		
+		//30 days
+		for (int i = 0; i < 30; i++) {
+			
+		}
 	}
 
 }
