@@ -17,37 +17,54 @@ public class Store extends Observable {
 	public int sausageRollCount = 30;
 
 	@SuppressWarnings("deprecation")
-	public void decrement(String type) {
+	public void decrement(String type, int amount) {
 		if (type.equals("springRoll")) {
-			springRollCount--;
+			for (int i = 0; i < amount; i++) {
+				springRollCount--;
+			}
+
 			if (springRollCount == 0) {
 				setChanged();
 				notifyObservers();
 			}
 		} else if (type.equals("eggRoll")) {
-			eggRollCount--;
+			for (int i = 0; i < amount; i++) {
+				eggRollCount--;
+			}
+			
 			if (eggRollCount == 0) {
 				setChanged();
 				notifyObservers();
 			}
 		} else if (type.equals("sausageRoll")) {
-			sausageRollCount--;
+			for (int i = 0; i < amount; i++) {
+				sausageRollCount--;
+			}
+			
 			if (sausageRollCount == 0) {
 				setChanged();
 				notifyObservers();
 			}
 		} else if (type.equals("pastryRoll")) {
-			pastryRollCount--;
+			for (int i = 0; i < amount; i++) {
+				pastryRollCount--;
+			}
+			
 			if (pastryRollCount == 0) {
 				setChanged();
 				notifyObservers();
 			}
 		} else if (type.equals("jellyRoll")) {
-			jellyRollCount--;
+			for (int i = 0; i < amount; i++) {
+				jellyRollCount--;
+			}
+			
 			if (jellyRollCount == 0) {
 				setChanged();
 				notifyObservers();
 			}
 		}
 	}
+	
+	
 }
