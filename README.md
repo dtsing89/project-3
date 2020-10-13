@@ -2,13 +2,13 @@
 ###### Team Names: David Tsing, Lina Larson, Brett Schneider
 
 ## comments or assumptions
-###### 1) 
-###### 2) 
+###### 1) If a Casual customer does not get all their items they count as unfulfilled.
+###### 2) If a casual customers item is out they do not replace it with a different type.
 ###### 3) 
 ###### 4) 
 
 ## Issues
-###### 1) 
+###### 1) Handling all of the random events, IN the different customers, rolls, fillings.
 ###### 2) 
 ###### 3)
 
