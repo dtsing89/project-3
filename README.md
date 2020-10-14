@@ -10,7 +10,7 @@
 ## Issues
 ###### 1) Handling all of the random events, IN the different customers, rolls, fillings.
 ###### 2) Applying the observer pattern was confusing because it wasn't clear who was the observer, and who was the observable.
-###### 3) 
+###### 3) Twords the end of the project we had an issue updating the inventory, the inventory updates but instead of staying at 0 when run out it resets back to 30.           This causes an issue with the print statments in the output file.
 
 ## Instructions to run code
 ###### 1) Download the code or copy the workspace using " git clone https://github.com/dtsing89/project_3 " in your comand line/ terminal. 
