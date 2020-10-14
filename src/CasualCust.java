@@ -6,6 +6,10 @@ public class CasualCust implements Customer {
 	Random random = new Random();
 	private int unf;
 	private double orderCost;
+	
+	public int getUnf() {
+		return unf;
+	}
 
 	public double getOrderCost() {
 		return orderCost;

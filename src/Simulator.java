@@ -11,38 +11,33 @@ public class Simulator implements Observer {
 	}
 
 	public void start() {
-//		Roll springRoll = new Roll("springRoll", store.springRollCost);
-//		Roll eggRoll = new Roll("eggRoll", store.eggRollCost);
-//		Roll jellyRoll = new Roll("jellyRoll", store.jellyRollCost);
-//		Roll sausageRoll = new Roll("sausageRoll", store.sausageRollCost);
-//		Roll pastryRoll = new Roll("pastryRoll", store.pastryRollCost);
-//
-//		springRoll = new Sauce(springRoll);
-//		springRoll = new Sauce(springRoll);
-//		eggRoll = new Toppings(eggRoll);
-//		eggRoll = new Sauce(eggRoll);
-//		eggRoll = new Fillings(eggRoll);
-//
-//		System.out.println("$" + springRoll.getCost());
-//		System.out.println("$" + eggRoll.getCost());
-//		System.out.println("$" + pastryRoll.getCost());
-//		System.out.println("$" + jellyRoll.getCost());
-//		System.out.println("$" + sausageRoll.getCost());
+
 
 		Random random = new Random();
 		CustCreator creator = new CustCreator();
+		
+		int custNum = random.nextInt(3);
+		int array[];
+		array = new int[20];
+		
+		for(int i =0; i < 18; i++){
+			custNum = random.nextInt(3);
 
-		for (int i = 0; i < 3; i++) {
+			array[i] = custNum;
+		}
+
+		for (int i = 0; i < 30; i++) {
+			System.out.println("Day: " + (i+1));
+			
+			double daySales = 0;
+			
 			int casualCount = 0;
 			int businessCount = 0;
 			int cateringCount = 0;
 
-
-			int custNum = random.nextInt(3);
-			//System.out.println(custNum);
 			
-			custNum = 1;
-
+			for(int j = 0; j < 18; j++){
+				custNum = array[j];
 
 			switch (custNum) {
 			case 0:
@@ -50,58 +45,11 @@ public class Simulator implements Observer {
 				CasualCust casual = new CasualCust();
 				
 				casual.create();
-				System.out.println(casual.getOrderCost());
+				daySales += casual.getOrderCost();
+				
+				//System.out.println(casual.getUnf());
 				
 				
-//				if (casualCount > 12) {
-//					break;
-//				}
-//
-//				creator.getCust("CasualCust");
-//				int buyAmount = random.nextInt(3) + 1;
-//				int rollType = random.nextInt(5);
-//
-//				switch (rollType) {
-//				case 0:
-//					if (store.springRollCount <= 0) {
-//						casualUnf++;
-//						break;
-//					}
-//
-//					store.decrement("springRoll", buyAmount);
-//
-//				case 1:
-//					if (store.eggRollCount <= 0) {
-//						casualUnf++;
-//						break;
-//					}
-//
-//					store.decrement("eggRoll", buyAmount);
-//
-//				case 2:
-//					if (store.sausageRollCount <= 0) {
-//						casualUnf++;
-//						break;
-//					}
-//
-//					store.decrement("sausageRoll", buyAmount);
-//				case 3:
-//					if (store.pastryRollCount <= 0) {
-//						casualUnf++;
-//						break;
-//					}
-//
-//					store.decrement("pastryRoll", buyAmount);
-//				case 4:
-//					if (store.jellyRollCount <= 0) {
-//						casualUnf++;
-//						break;
-//					}
-//
-//					store.decrement("jellyRoll", buyAmount);
-//				}
-//
-//				// update(store);
 
 			case 1:
 
@@ -112,34 +60,26 @@ public class Simulator implements Observer {
 				BusinessCust business = new BusinessCust();
 				
 				business.create();
-				System.out.println(business.getOrderCost());
+				daySales += business.getOrderCost();
 				
 				
-//				creator.getCust("BusinessCust");
-//
-//				if (store.springRollCount <= 0 || store.eggRollCount <= 0) {
-//					businessUnf++;
-//					break;
-//				} else if (store.jellyRollCount <= 0 || store.pastryRollCount <= 0 || store.sausageRollCount <= 0) {
-//					businessUnf++;
-//					break;
-//				} else {
-//					store.decrement("springRoll", 2);
-//					store.decrement("eggRoll", 2);
-//					store.decrement("sausageRoll", 2);
-//					store.decrement("pastryRoll", 2);
-//					store.decrement("jellyRoll", 2);
-//				}
 
 			case 2:
 				if (cateringCount > 3) {
 					break;
 				}
 				
-				creator.getCust("CateringCust");
+				CateringCust cater = new CateringCust();
+				
+				cater.create();
+				
+				daySales += cater.getOrderCost();
 				
 				
 			}
+			}
+			
+			System.out.println("Total days sales: " + Math.round(daySales));
 		}
 	}
 
