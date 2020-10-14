@@ -41,18 +41,12 @@ public class Simulator implements Observer {
 
 			switch (custNum) {
 			case 0:
-				
 				CasualCust casual = new CasualCust();
 				
 				casual.create();
 				daySales += casual.getOrderCost();
-				
-				//System.out.println(casual.getUnf());
-				
-				
 
 			case 1:
-
 				if (businessCount > 3) {
 					break;
 				}
