@@ -32,14 +32,16 @@ public class Simulator implements Observer {
 		Random random = new Random();
 		CustCreator creator = new CustCreator();
 
-		for (int i = 0; i < 30; i++) {
+		for (int i = 0; i < 3; i++) {
 			int casualCount = 0;
 			int businessCount = 0;
 			int cateringCount = 0;
 
 
 			int custNum = random.nextInt(3);
-			System.out.println(custNum);
+			//System.out.println(custNum);
+			
+			custNum = 1;
 
 
 			switch (custNum) {
@@ -48,6 +50,7 @@ public class Simulator implements Observer {
 				CasualCust casual = new CasualCust();
 				
 				casual.create();
+				System.out.println(casual.getOrderCost());
 				
 				
 //				if (casualCount > 12) {
@@ -106,6 +109,10 @@ public class Simulator implements Observer {
 					break;
 				}
 				
+				BusinessCust business = new BusinessCust();
+				
+				business.create();
+				System.out.println(business.getOrderCost());
 				
 				
 //				creator.getCust("BusinessCust");

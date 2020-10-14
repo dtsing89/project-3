@@ -5,8 +5,12 @@ public class CasualCust implements Customer {
 	
 	Random random = new Random();
 	private int unf;
-	private int orderCost;
+	private double orderCost;
 
+	public double getOrderCost() {
+		return orderCost;
+	}
+	
 	@Override
 	public void create() {
 		// ...
@@ -24,12 +28,6 @@ public class CasualCust implements Customer {
 		Roll jellyRoll = new Roll("jellyRoll", store.jellyRollCost);
 		Roll sausageRoll = new Roll("sausageRoll", store.sausageRollCost);
 		Roll pastryRoll = new Roll("pastryRoll", store.pastryRollCost);
-
-//		springRoll = new Sauce(springRoll);
-//		springRoll = new Sauce(springRoll);
-//		eggRoll = new Toppings(eggRoll);
-//		eggRoll = new Sauce(eggRoll);
-//		eggRoll = new Fillings(eggRoll);
 		
 		
 		switch (rollType) {
@@ -55,7 +53,7 @@ public class CasualCust implements Customer {
 			}
 			
 			
-			orderCost += springRoll.getCost() * buyAmount;
+			orderCost = springRoll.getCost() * buyAmount;
 			
 					
 		case 1:
@@ -79,7 +77,7 @@ public class CasualCust implements Customer {
 			}
 			
 			
-			orderCost += eggRoll.getCost() * buyAmount;
+			orderCost = eggRoll.getCost() * buyAmount;
 
 		case 2:
 			if (store.sausageRollCount <= 0) {
@@ -102,7 +100,7 @@ public class CasualCust implements Customer {
 			}
 			
 			
-			orderCost += sausageRoll.getCost() * buyAmount;
+			orderCost = sausageRoll.getCost() * buyAmount;
 		case 3:
 			if (store.pastryRollCount <= 0) {
 				unf++;
@@ -124,7 +122,7 @@ public class CasualCust implements Customer {
 			}
 			
 			
-			orderCost += pastryRoll.getCost() * buyAmount;
+			orderCost = pastryRoll.getCost() * buyAmount;
 		case 4:
 			if (store.jellyRollCount <= 0) {
 				unf++;
@@ -146,7 +144,7 @@ public class CasualCust implements Customer {
 			}
 			
 			
-			orderCost += jellyRoll.getCost() * buyAmount;
+			orderCost = jellyRoll.getCost() * buyAmount;
 		}
 	}
 
