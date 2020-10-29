@@ -10,11 +10,11 @@ public class Store extends Observable {
 	public double sausageRollCost = 6.00;
 
 	// inventory
-	public int springRollCount = 30;
-	public int eggRollCount = 30;
-	public int jellyRollCount = 30;
-	public int pastryRollCount = 30;
-	public int sausageRollCount = 30;
+	public int springRollCount = 60;
+	public int eggRollCount = 60;
+	public int jellyRollCount = 60;
+	public int pastryRollCount = 60;
+	public int sausageRollCount = 60;
 
 	@SuppressWarnings("deprecation")
 	public void decrement(String type, int amount) {

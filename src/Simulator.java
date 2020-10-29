@@ -1,4 +1,6 @@
 import java.util.Observable;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Observer;
 import java.util.Random;
 
@@ -10,8 +12,8 @@ public class Simulator implements Observer {
 		this.store = store;
 	}
 
-	public void start() {
-
+	public void start() throws IOException {
+		FileWriter writer = new FileWriter("60roll_inventory.out", true);
 
 		Random random = new Random();
 		CustCreator creator = new CustCreator();
@@ -27,7 +29,8 @@ public class Simulator implements Observer {
 		}
 
 		for (int i = 0; i < 30; i++) {
-			System.out.println("Day: " + (i+1));
+			writer.write("Day: " + (i+1));
+			writer.write("\n");
 			
 			double daySales = 0;
 			
@@ -73,8 +76,16 @@ public class Simulator implements Observer {
 			}
 			}
 			
-			System.out.println("Total days sales: " + Math.round(daySales));
+			writer.write("Total days sales: " + Math.round(daySales));
+			writer.write("\n");
+			writer.write("\n");
+			writer.write("END OF RUN -------------------------------");
+			writer.write("\n");
+			
+			
+			
 		}
+		writer.close();
 	}
 
 	@Override
